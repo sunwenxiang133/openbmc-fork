@@ -1,0 +1,11 @@
+[Unit]
+Description=Bind the SRM3-C0 NCA9545 I2C mux
+After=xyz.openbmc_project.Chassis.Control.Power@0.service
+Before=sophgo-yu08-temp-scan.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/sophgo-nca9545-bind.sh
+# Default worst case is 29s of retry sleeps plus up to 30 x 2s busctl calls
+# (89s total); leave additional time for driver probe and sysfs channel creation.
+TimeoutStartSec=120

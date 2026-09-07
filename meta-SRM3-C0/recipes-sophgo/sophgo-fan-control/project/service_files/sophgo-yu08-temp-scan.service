@@ -1,0 +1,16 @@
+[Unit]
+Description=SRM3-C0 YU08 Temperature Collector
+Wants=xyz.openbmc_project.externalsensor.service
+Requires=sophgo-nca9545-bind.service
+After=xyz.openbmc_project.EntityManager.service
+After=xyz.openbmc_project.externalsensor.service
+After=sophgo-nca9545-bind.service
+PartOf=sophgo-yu08-host-reconcile.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/sophgo-yu08-temp-scan.sh
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
