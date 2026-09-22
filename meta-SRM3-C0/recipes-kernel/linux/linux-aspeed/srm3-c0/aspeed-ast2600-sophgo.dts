@@ -724,6 +724,48 @@
 	pca9546@70 {
 		compatible = "nxp,pca9546";
 		reg = <0x70>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		i2c@0 {
+			reg = <0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			yu08@60 {
+				compatible = "sophgo,yu08";
+				reg = <0x60>;
+			};
+		};
+
+		i2c@1 {
+			reg = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			yu08@61 {
+				compatible = "sophgo,yu08";
+				reg = <0x61>;
+			};
+		};
+
+		i2c@2 {
+			reg = <2>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			yu08@62 {
+				compatible = "sophgo,yu08";
+				reg = <0x62>;
+			};
+		};
+
+		i2c@3 {
+			reg = <3>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			yu08@63 {
+				compatible = "sophgo,yu08";
+				reg = <0x63>;
+			};
+		};
 	};
 };
 &i2c6 {
@@ -740,6 +782,48 @@
 	pca9545@73 {
 		compatible = "nxp,pca9545";
 		reg = <0x73>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		i2c@0 {
+			reg = <0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			yu08@64 {
+				compatible = "sophgo,yu08";
+				reg = <0x64>;
+			};
+		};
+
+		i2c@1 {
+			reg = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			yu08@65 {
+				compatible = "sophgo,yu08";
+				reg = <0x65>;
+			};
+		};
+
+		i2c@2 {
+			reg = <2>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			yu08@66 {
+				compatible = "sophgo,yu08";
+				reg = <0x66>;
+			};
+		};
+
+		i2c@3 {
+			reg = <3>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			yu08@67 {
+				compatible = "sophgo,yu08";
+				reg = <0x67>;
+			};
+		};
 	};
 };
 

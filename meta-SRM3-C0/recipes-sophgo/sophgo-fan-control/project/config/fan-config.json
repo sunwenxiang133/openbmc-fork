@@ -112,9 +112,9 @@
         }
     },
     {
-        "name" : "YU08_Max_Temp",
-        "dbusName": "xyz.openbmc_project.ExternalSensor",
-        "readPath" : "/xyz/openbmc_project/sensors/temperature/YU08_Max_Temp",
+        "name" : "YU08_Chip0_Temp",
+        "dbusName": "xyz.openbmc_project.HwmonTempSensor",
+        "readPath" : "/xyz/openbmc_project/sensors/temperature/YU08_Chip0_Temp",
         "minSetPoint" : 45,
         "isInherent" : true,
         "shutdownThreshold" : 100,

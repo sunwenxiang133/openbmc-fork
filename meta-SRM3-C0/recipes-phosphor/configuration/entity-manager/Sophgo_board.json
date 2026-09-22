@@ -765,156 +765,147 @@
             },
             {
                 "Name": "YU08_Chip0_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-0/*/hwmon",
+                "InputName": "temp1",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Chip1_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-1/*/hwmon",
+                "InputName": "temp1",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Chip2_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-2/*/hwmon",
+                "InputName": "temp1",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Chip3_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-3/*/hwmon",
+                "InputName": "temp1",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Chip4_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-0/*/hwmon",
+                "InputName": "temp1",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Chip5_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-1/*/hwmon",
+                "InputName": "temp1",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Chip6_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-2/*/hwmon",
+                "InputName": "temp1",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Chip7_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-3/*/hwmon",
+                "InputName": "temp1",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Board0_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-0/*/hwmon",
+                "InputName": "temp2",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Board1_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-1/*/hwmon",
+                "InputName": "temp2",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Board2_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-2/*/hwmon",
+                "InputName": "temp2",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Board3_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-3/*/hwmon",
+                "InputName": "temp2",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Board4_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-0/*/hwmon",
+                "InputName": "temp2",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Board5_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-1/*/hwmon",
+                "InputName": "temp2",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Board6_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-2/*/hwmon",
+                "InputName": "temp2",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             },
             {
                 "Name": "YU08_Board7_Temp",
-                "Type": "ExternalSensor",
+                "Type": "HwmonTempSensor",
+                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-3/*/hwmon",
+                "InputName": "temp2",
                 "Units": "DegreesC",
                 "MinValue": 0,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
-            },
-            {
-                "Name": "YU08_Max_Temp",
-                "Type": "ExternalSensor",
-                "Units": "DegreesC",
-                "MinValue": -1,
-                "MaxValue": 255,
-                "Timeout": 10,
-                "PowerState": "On"
+                "MaxValue": 255
             }
         ],
         "Name": "SRM3-C0",     

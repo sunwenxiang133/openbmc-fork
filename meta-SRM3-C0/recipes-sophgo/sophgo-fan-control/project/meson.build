@@ -60,9 +60,6 @@ if systemd.found()
   service_files = [
     'service_files/sophgo-fan-control.service',
     'service_files/sophgo-riser-i2c-ctr.service',
-    'service_files/sophgo-nca9545-bind.service',
-    'service_files/sophgo-yu08-host-reconcile.service',
-    'service_files/sophgo-yu08-temp-scan.service',
   ]
   foreach service_file : service_files
     install_data(
