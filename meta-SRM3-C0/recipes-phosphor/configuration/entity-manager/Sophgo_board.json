@@ -4,7 +4,7 @@
             {
                 "Connector": {
                     "Name": "System Fan Connector 0",
-                    "PwmName":"Fan0_pwm",
+                    "PwmName": "Fan0_pwm",
                     "Pwm": 0,
                     "Tachs": 0
                 },
@@ -42,7 +42,7 @@
             {
                 "Connector": {
                     "Name": "System Fan Connector 1",
-                    "PwmName":"Fan1_pwm",
+                    "PwmName": "Fan1_pwm",
                     "Pwm": 1,
                     "Tachs": 1
                 },
@@ -80,7 +80,7 @@
             {
                 "Connector": {
                     "Name": "System Fan Connector 2",
-                    "PwmName":"Fan2_pwm",
+                    "PwmName": "Fan2_pwm",
                     "Pwm": 2,
                     "Tachs": 2
                 },
@@ -118,7 +118,7 @@
             {
                 "Connector": {
                     "Name": "System Fan Connector 3",
-                    "PwmName":"Fan3_pwm",
+                    "PwmName": "Fan3_pwm",
                     "Pwm": 3,
                     "Tachs": 3
                 },
@@ -765,152 +765,80 @@
             },
             {
                 "Name": "YU08_Chip0_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-0/*/hwmon",
-                "InputName": "temp1",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
+                "Name1": "YU08_Board0_Temp",
+                "Type": "YU08",
+                "Bus": 80,
+                "Address": "0x60",
+                "PowerState": "On",
+                "PollRate": 3
             },
             {
                 "Name": "YU08_Chip1_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-1/*/hwmon",
-                "InputName": "temp1",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
+                "Name1": "YU08_Board1_Temp",
+                "Type": "YU08",
+                "Bus": 81,
+                "Address": "0x61",
+                "PowerState": "On",
+                "PollRate": 3
             },
             {
                 "Name": "YU08_Chip2_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-2/*/hwmon",
-                "InputName": "temp1",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
+                "Name1": "YU08_Board2_Temp",
+                "Type": "YU08",
+                "Bus": 82,
+                "Address": "0x62",
+                "PowerState": "On",
+                "PollRate": 3
             },
             {
                 "Name": "YU08_Chip3_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-3/*/hwmon",
-                "InputName": "temp1",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
+                "Name1": "YU08_Board3_Temp",
+                "Type": "YU08",
+                "Bus": 83,
+                "Address": "0x63",
+                "PowerState": "On",
+                "PollRate": 3
             },
             {
                 "Name": "YU08_Chip4_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-0/*/hwmon",
-                "InputName": "temp1",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
+                "Name1": "YU08_Board4_Temp",
+                "Type": "YU08",
+                "Bus": 84,
+                "Address": "0x64",
+                "PowerState": "On",
+                "PollRate": 3
             },
             {
                 "Name": "YU08_Chip5_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-1/*/hwmon",
-                "InputName": "temp1",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
+                "Name1": "YU08_Board5_Temp",
+                "Type": "YU08",
+                "Bus": 85,
+                "Address": "0x65",
+                "PowerState": "On",
+                "PollRate": 3
             },
             {
                 "Name": "YU08_Chip6_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-2/*/hwmon",
-                "InputName": "temp1",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
+                "Name1": "YU08_Board6_Temp",
+                "Type": "YU08",
+                "Bus": 86,
+                "Address": "0x66",
+                "PowerState": "On",
+                "PollRate": 3
             },
             {
                 "Name": "YU08_Chip7_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-3/*/hwmon",
-                "InputName": "temp1",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
-            },
-            {
-                "Name": "YU08_Board0_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-0/*/hwmon",
-                "InputName": "temp2",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
-            },
-            {
-                "Name": "YU08_Board1_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-1/*/hwmon",
-                "InputName": "temp2",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
-            },
-            {
-                "Name": "YU08_Board2_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-2/*/hwmon",
-                "InputName": "temp2",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
-            },
-            {
-                "Name": "YU08_Board3_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/5-0070-channel-3/*/hwmon",
-                "InputName": "temp2",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
-            },
-            {
-                "Name": "YU08_Board4_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-0/*/hwmon",
-                "InputName": "temp2",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
-            },
-            {
-                "Name": "YU08_Board5_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-1/*/hwmon",
-                "InputName": "temp2",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
-            },
-            {
-                "Name": "YU08_Board6_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-2/*/hwmon",
-                "InputName": "temp2",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
-            },
-            {
-                "Name": "YU08_Board7_Temp",
-                "Type": "HwmonTempSensor",
-                "SysfsPath": "/sys/bus/i2c/devices/7-0073-channel-3/*/hwmon",
-                "InputName": "temp2",
-                "Units": "DegreesC",
-                "MinValue": 0,
-                "MaxValue": 255
+                "Name1": "YU08_Board7_Temp",
+                "Type": "YU08",
+                "Bus": 87,
+                "Address": "0x67",
+                "PowerState": "On",
+                "PollRate": 3
             }
         ],
-        "Name": "SRM3-C0",     
+        "Name": "SRM3-C0",
         "Probe": "xyz.openbmc_project.FruDevice({'BUS': 6, 'ADDRESS': 80})",
-        "Type": "Board",                 
+        "Type": "Board",
         "xyz.openbmc_project.Inventory.Decorator.Asset": {
             "Manufacturer": "$PRODUCT_MANUFACTURER",
             "Model": "$PRODUCT_PRODUCT_NAME",

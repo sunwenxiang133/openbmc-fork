@@ -59,7 +59,6 @@ systemd = dependency('systemd')
 if systemd.found()
   service_files = [
     'service_files/sophgo-fan-control.service',
-    'service_files/sophgo-riser-i2c-ctr.service',
   ]
   foreach service_file : service_files
     install_data(

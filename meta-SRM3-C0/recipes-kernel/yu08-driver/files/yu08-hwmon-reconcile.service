@@ -1,0 +1,16 @@
+[Unit]
+Description=Reconcile YU08 hwmon devices after Host power transitions
+Wants=xyz.openbmc_project.hwmontempsensor.service
+After=systemd-modules-load.service dbus.service
+After=xyz.openbmc_project.EntityManager.service
+After=xyz.openbmc_project.hwmontempsensor.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/yu08-hwmon-reconcile.sh
+Restart=always
+RestartSec=3
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

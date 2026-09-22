@@ -103,6 +103,7 @@ std::atomic<int> auto_timer_flag(false);
 std::atomic<int> sensor_timer_flag(false);
 std::atomic<int> is_first_time_poweron(true);
 std::atomic<double> g_outputRpmTar(45);
+bool g_forceFullSpeed = true;
 double g_def_fan_speed = 45;
 double g_outputRpmPre = 0;
 double g_outputRpmCru = 0;
@@ -241,29 +242,17 @@ bool is_needed_to_check_dbus(void)
 
 void async_wait_sensor_dbus_ready(const boost::system::error_code& ec)
 {
-    if (is_first_time_poweron.load()) {
-        ;
+    if (ec == boost::asio::error::operation_aborted || !isPowerOn) {
+        return;
     }
-    if (isNeededCheckDbus) {
-        wait_count++;
-        std::cout << "wait_count:" << wait_count <<std::endl;
-        if (is_sensor_dbus_ready()) {
-            if (isAutoControlMode()) {
-                //启动定时器
-                set_auto_timer(1);
-            }
-            set_sensor_monitor_timer(1);
-        } else {
-            std::cout << "repeat" <<std::endl;
-            set_detect_dbus_ready_timer(3);
-        }
-    } else {
-        if (isAutoControlMode()) {
-            //启动定时器
-            set_auto_timer(1);
-        }
-        set_sensor_monitor_timer(1);
+    // Missing D-Bus sensors must trigger protection, not block monitoring.
+    g_forceFullSpeed = true;
+    g_outputRpmTar.store(100);
+    writeAllFansPwm(PWM_MAX);
+    if (isAutoControlMode()) {
+        set_auto_timer(1);
     }
+    set_sensor_monitor_timer(1);
 }
 
 /*=============================================================================*/
@@ -878,7 +867,11 @@ void cycle_auto_fan_control (const boost::system::error_code& ec)
     }
     // std::cout << "g_outputRpmTar " << g_outputRpmTar.load() << std::endl;
     if ((isPowerOn) && (g_fanControlMode == "auto")) {
-        if (isAutoStart) {
+        if (g_forceFullSpeed) {
+            g_outputRpmPre = 100;
+            g_outputRpmCru = 100;
+            isAutoStart = false;
+        } else if (isAutoStart) {
             g_outputRpmPre = g_outputRpmTar.load();
             g_outputRpmCru = g_outputRpmTar.load();
             isAutoStart    = false;
@@ -912,6 +905,7 @@ void cycle_sensor_monitor(const boost::system::error_code& ec)
     double tempValue = 0;
     double outputMax = 0;
     double output    = 100;
+    bool forceFullSpeed = false;
 
     if (ec == boost::asio::error::operation_aborted) {
         std::cout << "Sensor monitor timer is canceled!" << std::endl;
@@ -941,6 +935,7 @@ void cycle_sensor_monitor(const boost::system::error_code& ec)
         }
 
         if (fanFaultCount) {
+            forceFullSpeed = true;
             outputMax = 100;
             for (/* const */ auto& [name, config] : g_tempDataMap) {
                 tempValue = readTempValue(config.readPath,config.dbusName);
@@ -955,6 +950,7 @@ void cycle_sensor_monitor(const boost::system::error_code& ec)
                 double value = readTempValue(config.readPath,config.dbusName);
                 if(!std::isfinite(value) || value < 0) {
                     if (config.isInherent) {
+                        forceFullSpeed = true;
                         outputMax = 100;
                         if (config.accessibility) {
                             //report log
@@ -969,6 +965,7 @@ void cycle_sensor_monitor(const boost::system::error_code& ec)
                     }
 
                 } else if (value >= config.shutdownThreshold) {
+                    forceFullSpeed = true;
                     std::cout << name << " high temperature " << value << ",force power off." << std::endl;
                     outputMax = 100;
                     forcePowerOff(conn);
@@ -987,6 +984,17 @@ void cycle_sensor_monitor(const boost::system::error_code& ec)
             }
         }
         g_outputRpmTar.store(outputMax);
+        const bool recovering = g_forceFullSpeed && !forceFullSpeed;
+        g_forceFullSpeed = forceFullSpeed;
+        if (forceFullSpeed) {
+            // Fault response bypasses the normal PWM ramp and manual mode.
+            g_outputRpmPre = 100;
+            g_outputRpmCru = 100;
+            writeAllFansPwm(PWM_MAX);
+        } else if (recovering && !isAutoControlMode()) {
+            writeAllFansPwm(percentageToActual(
+                controlParamMap.at(controlModeMap.at(g_fanControlMode)), PWM_MAX));
+        }
         // std::cout << "g_outputRpmTar=" << g_outputRpmTar.load() << "outputMax=" << outputMax << std::endl;
     }
     repeat_sensor_monitor_timer();
@@ -1015,7 +1023,7 @@ int setFanControlMode(std::string mode)
                     g_fanControlMode = mode;
                     std::cout << "control mode = " << g_fanControlMode << "; pwm = " << pwm << std::endl;
                     cancel_auto_timer();
-                    writeAllFansPwm(pwm);
+                    writeAllFansPwm(isPowerOn && g_forceFullSpeed ? PWM_MAX : pwm);
                 } else {
                     return -1;
                 }

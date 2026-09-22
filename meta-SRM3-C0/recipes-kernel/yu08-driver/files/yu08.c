@@ -19,7 +19,7 @@
 static int yu08_read(struct device *dev, enum hwmon_sensor_types type,
 		     u32 attr, int channel, long *val)
 {
-	struct i2c_client *client = to_i2c_client(dev);
+	struct i2c_client *client = dev_get_drvdata(dev);
 	int reg, ret;
 
 	if (type != hwmon_temp)
@@ -44,7 +44,7 @@ static int yu08_read(struct device *dev, enum hwmon_sensor_types type,
 		return ret;
 
 	/* unsigned char, unit: degree Celsius, convert to millidegree */
-	*val = (unsigned long)ret * 1000;
+	*val = (long)ret * 1000;
 
 	return 0;
 }
@@ -84,6 +84,9 @@ static int yu08_probe(struct i2c_client *client,
 	struct device *dev = &client->dev;
 	struct device *hwmon_dev;
 	int board_type;
+
+	if (!i2c_check_functionality(client->adapter, I2C_FUNC_SMBUS_BYTE_DATA))
+		return -EOPNOTSUPP;
 
 	/* Verify board type */
 	board_type = i2c_smbus_read_byte_data(client, YU08_REG_BOARD_TYPE);

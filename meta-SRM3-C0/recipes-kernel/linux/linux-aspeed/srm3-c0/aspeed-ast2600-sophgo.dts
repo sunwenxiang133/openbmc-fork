@@ -12,6 +12,15 @@
 	compatible = "aspeed,ast2600";
 
 	aliases {
+		/* Stable mux bus numbers used by Entity Manager. */
+		i2c80 = &yu08_bus0;
+		i2c81 = &yu08_bus1;
+		i2c82 = &yu08_bus2;
+		i2c83 = &yu08_bus3;
+		i2c84 = &yu08_bus4;
+		i2c85 = &yu08_bus5;
+		i2c86 = &yu08_bus6;
+		i2c87 = &yu08_bus7;
 		serial4 = &uart5;
 		mmc0 = &emmc;
 	#if 0
@@ -727,7 +736,7 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-		i2c@0 {
+		yu08_bus0: i2c@0 {
 			reg = <0>;
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -737,7 +746,7 @@
 			};
 		};
 
-		i2c@1 {
+		yu08_bus1: i2c@1 {
 			reg = <1>;
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -747,7 +756,7 @@
 			};
 		};
 
-		i2c@2 {
+		yu08_bus2: i2c@2 {
 			reg = <2>;
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -757,7 +766,7 @@
 			};
 		};
 
-		i2c@3 {
+		yu08_bus3: i2c@3 {
 			reg = <3>;
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -785,7 +794,7 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-		i2c@0 {
+		yu08_bus4: i2c@0 {
 			reg = <0>;
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -795,7 +804,7 @@
 			};
 		};
 
-		i2c@1 {
+		yu08_bus5: i2c@1 {
 			reg = <1>;
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -805,7 +814,7 @@
 			};
 		};
 
-		i2c@2 {
+		yu08_bus6: i2c@2 {
 			reg = <2>;
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -815,7 +824,7 @@
 			};
 		};
 
-		i2c@3 {
+		yu08_bus7: i2c@3 {
 			reg = <3>;
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -1269,7 +1278,6 @@
 	status = "okay";
 	memory-region = <&video_engine_memory>;
 };
-
 
 
 
