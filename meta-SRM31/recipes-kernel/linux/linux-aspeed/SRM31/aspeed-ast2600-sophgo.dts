@@ -14,6 +14,14 @@
 	aliases {
 		serial4 = &uart5;
 		mmc0 = &emmc;
+		i2c16 = &yu08_bus0;
+		i2c17 = &yu08_bus1;
+		i2c18 = &yu08_bus2;
+		i2c19 = &yu08_bus3;
+		i2c20 = &yu08_bus4;
+		i2c21 = &yu08_bus5;
+		i2c22 = &yu08_bus6;
+		i2c23 = &yu08_bus7;
 		
 	#if 0
 		mmc1 = &sdhci0;
@@ -725,6 +733,33 @@
 	pca9546@70 {
 		compatible = "nxp,pca9546";
 		reg = <0x70>;
+
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		yu08_bus0: i2c@0 {
+			reg = <0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+		};
+
+		yu08_bus1: i2c@1 {
+			reg = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+		};
+
+		yu08_bus2: i2c@2 {
+			reg = <2>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+		};
+
+		yu08_bus3: i2c@3 {
+			reg = <3>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+		};
 	};
 };
 &i2c6 {
@@ -737,6 +772,38 @@
 };
 &i2c7 {
 	status = "okay";
+
+	pca9545@73 {
+        compatible = "nxp,pca9545";
+        reg = <0x73>;
+
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        yu08_bus4: i2c@0 {
+            reg = <0>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+        };
+
+        yu08_bus5: i2c@1 {
+            reg = <1>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+        };
+
+        yu08_bus6: i2c@2 {
+            reg = <2>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+        };
+
+        yu08_bus7: i2c@3 {
+            reg = <3>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+        };
+    };
 };
 
 &i2c8 {
