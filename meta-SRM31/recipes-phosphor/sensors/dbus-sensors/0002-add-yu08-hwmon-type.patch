@@ -1,0 +1,32 @@
+Subject: [PATCH] hwmon: recognize YU08 dual-channel temperature sensors
+
+Use the existing Bus/Address and Name/Name1 configuration contract.
+YU08 clients are instantiated by the board device tree.
+Both temperature channels report unsigned byte Celsius values.
+
+Upstream-Status: Inappropriate [platform specific]
+
+diff --git a/src/HwmonTempMain.cpp b/src/HwmonTempMain.cpp
+--- a/src/HwmonTempMain.cpp
++++ b/src/HwmonTempMain.cpp
+@@ -77,6 +77,7 @@ static const I2CDeviceTypeMap sensorTypes{
+     {"W83773G", I2CDeviceType{"w83773g", true}},
+     {"TMP451", I2CDeviceType{"tmp451", true}},
+     {"CT7451", I2CDeviceType{"ct7451", true}},
++    {"YU08", I2CDeviceType{"yu08", true}},
+ };
+
+ static struct SensorParams
+@@ -426,6 +427,12 @@ void createSensors(
+
+             const SensorData& sensorData = findSensorCfg->second.sensorData;
+             const std::string& sensorType = findSensorCfg->second.interface;
++            if (sensorType == "xyz.openbmc_project.Configuration.YU08")
++            {
++                thisSensorParameters.minValue = 0;
++                thisSensorParameters.maxValue = 255;
++            }
++
+             const SensorBaseConfigMap& baseConfigMap =
+                 findSensorCfg->second.config;
+             std::vector<std::string>& hwmonName = findSensorCfg->second.name;
