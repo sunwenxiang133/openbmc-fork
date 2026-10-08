@@ -66,7 +66,7 @@ static const struct hwmon_ops yu08_hwmon_ops = {
 	.read = yu08_read,
 };
 
-static const struct hwmon_channel_info * const yu08_info[] = {
+static const struct hwmon_channel_info *yu08_info[] = {
 	HWMON_CHANNEL_INFO(temp,
 			   HWMON_T_INPUT,	/* temp1: chip temperature */
 			   HWMON_T_INPUT),	/* temp2: board temperature */
@@ -75,37 +75,66 @@ static const struct hwmon_channel_info * const yu08_info[] = {
 
 static const struct hwmon_chip_info yu08_chip_info = {
 	.ops = &yu08_hwmon_ops,
-	.info = (const struct hwmon_channel_info * const *)yu08_info,
+	.info = yu08_info,
 };
 
+// static int yu08_probe(struct i2c_client *client,
+// 		      const struct i2c_device_id *id)
+// {
+// 	struct device *dev = &client->dev;
+// 	struct device *hwmon_dev;
+// 	int board_type;
+
+// 	if (!i2c_check_functionality(client->adapter, I2C_FUNC_SMBUS_BYTE_DATA))
+// 		return -EOPNOTSUPP;
+
+// 	/* Verify board type */
+// 	board_type = i2c_smbus_read_byte_data(client, YU08_REG_BOARD_TYPE);
+// 	if (board_type < 0) {
+// 		dev_err(dev, "Failed to read board type: %d\n", board_type);
+// 		return board_type;
+// 	}
+
+// 	if (board_type != YU08_BOARD_TYPE_ID) {
+// 		dev_err(dev, "Invalid board type: 0x%02x (expected 0x%02x)\n",
+// 			board_type, YU08_BOARD_TYPE_ID);
+// 		return -ENODEV;
+// 	}
+
+// 	hwmon_dev = devm_hwmon_device_register_with_info(dev,
+// 							 client->name,
+// 							 client,
+// 							 &yu08_chip_info,
+// 							 NULL);
+// 	if (IS_ERR(hwmon_dev)) {
+// 		dev_err(dev, "Failed to register hwmon device\n");
+// 		return PTR_ERR(hwmon_dev);
+// 	}
+
+// 	dev_info(dev, "YU08 temperature sensor registered\n");
+
+// 	return 0;
+// }
 static int yu08_probe(struct i2c_client *client,
-		      const struct i2c_device_id *id)
+		     const struct i2c_device_id *id)
 {
 	struct device *dev = &client->dev;
 	struct device *hwmon_dev;
-	int board_type;
 
-	if (!i2c_check_functionality(client->adapter, I2C_FUNC_SMBUS_BYTE_DATA))
+	if (!i2c_check_functionality(client->adapter,
+				     I2C_FUNC_SMBUS_BYTE_DATA))
 		return -EOPNOTSUPP;
 
-	/* Verify board type */
-	board_type = i2c_smbus_read_byte_data(client, YU08_REG_BOARD_TYPE);
-	if (board_type < 0) {
-		dev_err(dev, "Failed to read board type: %d\n", board_type);
-		return board_type;
-	}
-
-	if (board_type != YU08_BOARD_TYPE_ID) {
-		dev_err(dev, "Invalid board type: 0x%02x (expected 0x%02x)\n",
-			board_type, YU08_BOARD_TYPE_ID);
-		return -ENODEV;
-	}
-
+	/*
+	 * Bind based on the device-tree declaration.
+	 * Do not require a specific board-type register value.
+	 * Temperature read errors are reported by yu08_read().
+	 */
 	hwmon_dev = devm_hwmon_device_register_with_info(dev,
-							 client->name,
-							 client,
-							 &yu08_chip_info,
-							 NULL);
+						       client->name,
+						       client,
+						       &yu08_chip_info,
+						       NULL);
 	if (IS_ERR(hwmon_dev)) {
 		dev_err(dev, "Failed to register hwmon device\n");
 		return PTR_ERR(hwmon_dev);
@@ -115,6 +144,7 @@ static int yu08_probe(struct i2c_client *client,
 
 	return 0;
 }
+
 
 static const struct of_device_id yu08_of_match[] = {
 	{ .compatible = "sophgo,yu08" },
