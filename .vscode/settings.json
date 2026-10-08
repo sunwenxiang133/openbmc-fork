@@ -6,17 +6,17 @@
     "bitbake.workingDirectory": "${workspaceFolder}",
     "files.exclude": {
         "**/.git/**": true,
-        "**/_build/**": true,
-        "**/buildhistory/**": true,
-        "**/cache/**": true,
-        "**/downloads/**": true,
-        "**/node_modules/**": true,
-        "**/oe-logs/**": true,
-        "**/oe-workdir/**": true,
-        "**/sstate-cache/**": true,
-        "**/tmp*/**": true,
-        "**/workspace/attic/**": true,
-        "**/workspace/sources/**": true
+        // "**/_build/**": true,
+        // "**/buildhistory/**": true,
+        // "**/cache/**": true,
+        // "**/downloads/**": true,
+        // "**/node_modules/**": true,
+        // "**/oe-logs/**": true,
+        // "**/oe-workdir/**": true,
+        // "**/sstate-cache/**": true,
+        // "**/tmp*/**": true,
+        // "**/workspace/attic/**": true,
+        // "**/workspace/sources/**": true
     },
     "files.watcherExclude": {
         "**/.git/**": true,

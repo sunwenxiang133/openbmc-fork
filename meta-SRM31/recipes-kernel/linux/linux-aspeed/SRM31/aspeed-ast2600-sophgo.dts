@@ -741,24 +741,40 @@
 			reg = <0>;
 			#address-cells = <1>;
 			#size-cells = <0>;
+			yu08@60 {
+				compatible = "sophgo,yu08";
+				reg = <0x60>;
+			};
 		};
 
 		yu08_bus1: i2c@1 {
 			reg = <1>;
 			#address-cells = <1>;
 			#size-cells = <0>;
+			yu08@61 {
+				compatible = "sophgo,yu08";
+				reg = <0x61>;
+			};
 		};
 
 		yu08_bus2: i2c@2 {
 			reg = <2>;
 			#address-cells = <1>;
 			#size-cells = <0>;
+			yu08@62 {
+				compatible = "sophgo,yu08";
+				reg = <0x62>;
+			};
 		};
 
 		yu08_bus3: i2c@3 {
 			reg = <3>;
 			#address-cells = <1>;
 			#size-cells = <0>;
+			yu08@63 {
+				compatible = "sophgo,yu08";
+				reg = <0x63>;
+			};
 		};
 	};
 };
@@ -784,24 +800,42 @@
             reg = <0>;
             #address-cells = <1>;
             #size-cells = <0>;
+			yu08@64 {
+				compatible = "sophgo,yu08";
+				reg = <0x64>;
+			};
         };
 
         yu08_bus5: i2c@1 {
             reg = <1>;
             #address-cells = <1>;
             #size-cells = <0>;
+
+			yu08@65 {
+				compatible = "sophgo,yu08";
+				reg = <0x65>;
+			};
         };
 
         yu08_bus6: i2c@2 {
             reg = <2>;
             #address-cells = <1>;
             #size-cells = <0>;
+
+			yu08@66 {
+				compatible = "sophgo,yu08";
+				reg = <0x66>;
+			};
         };
 
         yu08_bus7: i2c@3 {
             reg = <3>;
             #address-cells = <1>;
             #size-cells = <0>;
+			yu08@67 {
+				compatible = "sophgo,yu08";
+				reg = <0x67>;
+			};
         };
     };
 };
