@@ -1,7 +1,9 @@
 {
+    "clangd.path": "/home/sunwx/myjob/openbmc/.vscode/tools/clangd_20.1.8/bin/clangd",
+    "clangd.arguments": ["--background-index", "--compile-commands-dir=/home/sunwx/myjob/openbmc/.vscode/clangd/SRM31", "--query-driver=/home/sunwx/myjob/openbmc/build/SRM31/tmp/work/*/*/*/recipe-sysroot-native/usr/bin/arm-openbmc-linux-gnueabi/arm-openbmc-linux-gnueabi-*"],
     "bitbake.pathToBitbakeFolder": "${workspaceFolder}/bitbake",
     "bitbake.pathToEnvScript": "${workspaceFolder}/oe-init-build-env",
-    "bitbake.pathToBuildFolder": "${workspaceFolder}/build-rebase-check",
+    "bitbake.pathToBuildFolder": "${workspaceFolder}/build/SRM31",
     "bitbake.commandWrapper": "",
     "bitbake.workingDirectory": "${workspaceFolder}",
     "files.exclude": {

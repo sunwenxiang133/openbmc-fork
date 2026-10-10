@@ -1,0 +1,58 @@
+Subject: [PATCH] Refresh sensor readings while the Sensors page is open
+
+Fetch sensor readings again three seconds after each refresh completes.
+Stop scheduling refreshes when the page is destroyed.
+
+Upstream-Status: Inappropriate [platform specific]
+
+--- a/src/views/HardwareStatus/Sensors/Sensors.vue
++++ b/src/views/HardwareStatus/Sensors/Sensors.vue
+@@ -162,6 +162,9 @@
+   data() {
+     return {
+       isBusy: true,
++      sensorRefreshTimer: null,
++      sensorRefreshStopped: false,
++      sensorRefreshBusy: false,
+       fields: [
+         {
+           key: 'checkbox',
+@@ -255,12 +258,34 @@
+   },
+   created() {
+     this.startLoader();
+-    this.$store.dispatch('sensors/getAllSensors').finally(() => {
+-      this.endLoader();
+-      this.isBusy = false;
+-    });
++    this.refreshSensorReadings();
++  },
++  beforeDestroy() {
++    this.sensorRefreshStopped = true;
++    clearTimeout(this.sensorRefreshTimer);
+   },
+   methods: {
++    async refreshSensorReadings() {
++      if (this.sensorRefreshStopped || this.sensorRefreshBusy) return;
++
++      this.sensorRefreshBusy = true;
++      try {
++        await this.$store.dispatch('sensors/getAllSensors');
++      } catch (error) {
++        console.error('Failed to refresh sensor readings', error);
++      } finally {
++        this.sensorRefreshBusy = false;
++        if (!this.sensorRefreshStopped) {
++          if (this.isBusy) {
++            this.endLoader();
++            this.isBusy = false;
++          }
++          this.sensorRefreshTimer = setTimeout(() => {
++            this.refreshSensorReadings();
++          }, 3000);
++        }
++      }
++    },
+     sortCompare(a, b, key) {
+       if (key === 'status') {
+         return this.sortStatus(a, b, key);

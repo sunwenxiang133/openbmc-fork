@@ -1,0 +1,18 @@
+[Unit]
+Description=YU08 Temperature Sensor Service
+Requires=dbus.service
+Wants=xyz.openbmc_project.EntityManager.service
+After=dbus.service xyz.openbmc_project.EntityManager.service
+
+[Service]
+Type=dbus
+BusName=xyz.openbmc_project.YU08TempSensor
+ExecStart=/usr/bin/yu08-temp-sensor
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

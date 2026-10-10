@@ -11,6 +11,7 @@ SRC_URI:append = " file://0007-add-fan-speed-control-UI.patch "
 SRC_URI:append = " file://0008-update-network-UI.patch "
 SRC_URI:append = " file://0009-add-SOL-log-export-function.patch "
 SRC_URI:append = " file://0010-add-1684-board-temperature-display-function.patch "
+SRC_URI:append = " file://0011-refresh-sensor-readings.patch "
 
 
 # close the following content when using the devtool command

@@ -2,6 +2,62 @@
     {
         "Exposes": [
             {
+                "Type": "YU08",
+                "Name": "YU08_Chip0_Temp",
+                "Name1": "YU08_Board0_Temp",
+                "Bus": 16,
+                "Address": 96
+            },
+            {
+                "Type": "YU08",
+                "Name": "YU08_Chip1_Temp",
+                "Name1": "YU08_Board1_Temp",
+                "Bus": 17,
+                "Address": 97
+            },
+            {
+                "Type": "YU08",
+                "Name": "YU08_Chip2_Temp",
+                "Name1": "YU08_Board2_Temp",
+                "Bus": 18,
+                "Address": 98
+            },
+            {
+                "Type": "YU08",
+                "Name": "YU08_Chip3_Temp",
+                "Name1": "YU08_Board3_Temp",
+                "Bus": 19,
+                "Address": 99
+            },
+            {
+                "Type": "YU08",
+                "Name": "YU08_Chip4_Temp",
+                "Name1": "YU08_Board4_Temp",
+                "Bus": 20,
+                "Address": 100
+            },
+            {
+                "Type": "YU08",
+                "Name": "YU08_Chip5_Temp",
+                "Name1": "YU08_Board5_Temp",
+                "Bus": 21,
+                "Address": 101
+            },
+            {
+                "Type": "YU08",
+                "Name": "YU08_Chip6_Temp",
+                "Name1": "YU08_Board6_Temp",
+                "Bus": 22,
+                "Address": 102
+            },
+            {
+                "Type": "YU08",
+                "Name": "YU08_Chip7_Temp",
+                "Name1": "YU08_Board7_Temp",
+                "Bus": 23,
+                "Address": 103
+            },
+            {
                 "Connector": {
                     "Name": "System Fan Connector 0",
                     "PwmName":"Fan0_pwm",
@@ -762,79 +818,7 @@
                         "Value": 2.7
                     }
                 ]
-            },
-            {
-                "Name": "YU08_Chip0_Temp",
-                "Name1": "YU08_Board0_Temp",
-                "Type": "YU08",
-                "Bus": 16,
-                "Address": "0x60",
-                "PowerState": "On",
-                "PollRate": 3
-            },
-            {
-                "Name": "YU08_Chip1_Temp",
-                "Name1": "YU08_Board1_Temp",
-                "Type": "YU08",
-                "Bus": 17,
-                "Address": "0x61",
-                "PowerState": "On",
-                "PollRate": 3
-            },
-            {
-                "Name": "YU08_Chip2_Temp",
-                "Name1": "YU08_Board2_Temp",
-                "Type": "YU08",
-                "Bus": 18,
-                "Address": "0x62",
-                "PowerState": "On",
-                "PollRate": 3
-            },
-            {
-                "Name": "YU08_Chip3_Temp",
-                "Name1": "YU08_Board3_Temp",
-                "Type": "YU08",
-                "Bus": 19,
-                "Address": "0x63",
-                "PowerState": "On",
-                "PollRate": 3
-            },
-            {
-                "Name": "YU08_Chip4_Temp",
-                "Name1": "YU08_Board4_Temp",
-                "Type": "YU08",
-                "Bus": 20,
-                "Address": "0x64",
-                "PowerState": "On",
-                "PollRate": 3
-            },
-            {
-                "Name": "YU08_Chip5_Temp",
-                "Name1": "YU08_Board5_Temp",
-                "Type": "YU08",
-                "Bus": 21,
-                "Address": "0x65",
-                "PowerState": "On",
-                "PollRate": 3
-            },
-            {
-                "Name": "YU08_Chip6_Temp",
-                "Name1": "YU08_Board6_Temp",
-                "Type": "YU08",
-                "Bus": 22,
-                "Address": "0x66",
-                "PowerState": "On",
-                "PollRate": 3
-            },
-            {
-                "Name": "YU08_Chip7_Temp",
-                "Name1": "YU08_Board7_Temp",
-                "Type": "YU08",
-                "Bus": 23,
-                "Address": "0x67",
-                "PowerState": "On",
-                "PollRate": 3
-            }            
+            }
         ],
         "Name": "SRM31",     
         "Probe": "xyz.openbmc_project.FruDevice({'BUS': 6, 'ADDRESS': 80})",
