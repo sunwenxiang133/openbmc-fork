@@ -1,6 +1,0 @@
-{
-    "recommendations": [
-        "yocto-project.yocto-bitbake",
-        "llvm-vs-code-extensions.vscode-clangd"
-    ]
-}

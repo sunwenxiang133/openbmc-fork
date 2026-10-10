@@ -1,6 +1,4 @@
 build*/*
-.planning/
 customrc
 *.sw?
 .repo/
-.vscode/
